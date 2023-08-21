@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+
 """
 Main file
 """
@@ -12,9 +13,3 @@ print(res)
 res = index_range(page=3, page_size=15)
 print(type(res))
 print(res)
-
-bob@dylan:~$ ./0-main.py
-<class 'tuple'>
-(0, 7)
-<class 'tuple'>
-(30, 45)
