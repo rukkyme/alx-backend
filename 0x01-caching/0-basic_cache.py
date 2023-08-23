@@ -2,11 +2,11 @@
 """caching in dictionary"""
 from base_caching import BaseCaching
 
-
+"""BasicCache inherits from BaseCaching"""
 class BasicCache(BaseCaching):
-    """Adding more items in the dictionary"""
-
+    
     def put(self, key, item):
+        """Adding more items in the dictionary"""
         if key is not None and item is not None:
             self.cache_data[key] = item
 
