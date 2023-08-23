@@ -11,7 +11,7 @@ class BasicCache(BaseCaching):
             self.cache_data[key] = item
 
     def get(self, key):
-
+        """retrieves item in the dictionary"""
         if key is not None and key in self.cache_data:
             return self.cache_data[key]
         else:
