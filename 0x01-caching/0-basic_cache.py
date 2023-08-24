@@ -5,7 +5,7 @@ from base_caching import BaseCaching
 
 class BasicCache(BaseCaching):
     """BasicCache inherits from BaseCaching"""
-    
+
     def put(self, key, item):
         """Adding more items in the dictionary"""
         if key is not None and item is not None:
@@ -16,4 +16,3 @@ class BasicCache(BaseCaching):
         if key is not None and key in self.cache_data:
             return self.cache_data[key]
         return None
-    
