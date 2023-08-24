@@ -5,6 +5,7 @@ from base_caching import BaseCaching
 
 class FIFOCache(BaseCaching):
     """ using FIFO  """
+
     def __init__(self):
         """ Initializing class instance and calling it. """
         super().__init__()
@@ -21,4 +22,3 @@ class FIFOCache(BaseCaching):
     def get(self, key):
         """ retrieving item with key """
         return self.cache_data.get(key)
-    
