@@ -4,25 +4,38 @@ from base_caching import BaseCaching
 from collections import OrderedDict
 
 
-class LRUCache(BaseCaching):
-    """ LRU caching system"""
+class MRUCache(BaseCaching):
+    """ MRU caching system
+    """
 
     def __init__(self):
         """ Initializing class instance. """
         super().__init__()
         self.cache_data = OrderedDict()
+        self.mru = ""
 
     def put(self, key, item):
-        """ adding item to the cache"""
+        """adding item to the cache
+        """
         if key and item:
-            self.cache_data[key] = item
-            self.cache_data.move_to_end(key)
-            if len(self.cache_data) > BaseCaching.MAX_ITEMS:
-                discarded = self.cache_data.popitem(last=False)
-                print('DISCARD: {}'.format(discarded[0]))
+            if len(self.cache_data) >= BaseCaching.MAX_ITEMS:
+                if key in self.cache_data:
+                    self.cache_data.update({key: item})
+                    self.mru = key
+                else:
+                    discarded = self.mru
+                    del self.cache_data[discarded]
+                    print("DISCARD: {}".format(discarded))
+                    self.cache_data[key] = item
+                    self.mru = key
+            else:
+                self.cache_data[key] = item
+                self.mru = key
 
     def get(self, key):
-        """ retrieving item with key """
+        """ retrieve with the  key
+        """
         if key in self.cache_data:
-            self.cache_data.move_to_end(key)
+            self.mru = key
             return self.cache_data[key]
+        
