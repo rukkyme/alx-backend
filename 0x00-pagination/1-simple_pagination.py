@@ -12,7 +12,6 @@ def index_range(page: int, page_size: int):
     return (start_index, end_index)
 
 
-
 class Server:
     """Server class to paginate a database of popular baby names.
     """
@@ -41,4 +40,3 @@ class Server:
         start, end = index_range(page, page_size)
         data = self.dataset()
         return [] if end >= len(data) else data[start: end]
-    
